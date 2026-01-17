@@ -16,7 +16,6 @@ public class OrderController {
 
     private final OrderRepository orderRepository;
 
-    // 1. Yeni Sipariş Oluşturma (Zırhlı Kayıt)
     @PostMapping("/place")
     public ResponseEntity<?> placeOrder(@RequestBody Order order) {
         try {
@@ -24,7 +23,6 @@ public class OrderController {
                 return ResponseEntity.badRequest().body("Hata: Koleksiyon seçilmeden sipariş verilemez.");
             }
 
-            // KRİTİK ADIM: Her item için sipariş referansını bağla
             order.getItems().forEach(item -> item.setOrder(order));
 
             order.setOrderDate(LocalDateTime.now());
@@ -60,4 +58,5 @@ public class OrderController {
             return ResponseEntity.ok("Sipariş durumu '" + cleanStatus + "' olarak güncellendi.");
         }).orElse(ResponseEntity.notFound().build());
     }
+
 }
