@@ -18,9 +18,10 @@ public class Product {
     private String name;
     @Column(length = 1000)
     private String description;
-    private BigDecimal price; // BigDecimal kullanımı en profesyonelidir
+    private BigDecimal price;
     private String category;
     private String imageUrl;
     private Integer stockQuantity;
     private String sellerEmail; 
+
 }
