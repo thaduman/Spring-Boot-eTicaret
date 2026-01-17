@@ -7,17 +7,11 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor // Lombok ile Kurucu Enjeksiyonu yapar (daha temiz)
+@RequiredArgsConstructor 
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository repo; // final olarak tanımlandı
 
-    // Eğer Lombok kullanmıyorsanız, bu kurucuya ihtiyacınız var:
-    /*
-    public CustomUserDetailsService(UserRepository repo) {
-        this.repo = repo;
-    }
-    */
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -33,4 +27,5 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles(user.getRole().name())
                 .build();
     }
+
 }
