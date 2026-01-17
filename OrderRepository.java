@@ -8,9 +8,8 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     
-    // Kullanıcının geçmiş siparişlerini "MyOrders" sayfasında asaletle sergilemek için
     List<Order> findByCustomerEmailOrderByOrderDateDesc(String customerEmail);
     
-    // Satıcı paneli için tüm siparişleri kronolojik listeleme
     List<Order> findAllByOrderByOrderDateDesc();
+
 }
